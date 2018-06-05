@@ -1,6 +1,6 @@
 console.log('testing')
 
-const heading = document.querySelector('h1')
+const heading = document.querySelector('#header2')
 const button = document.querySelector('button')
 
 function changeText(){
