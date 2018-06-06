@@ -5,10 +5,11 @@ const changeHeading = function(ev) {
 
   const f = ev.target
   const spellName = f.spellName.value
+  const manaCost = f.manaCost.value
 
   const spellsDiv = document.querySelector('#spells')
   spellsDiv.innerHTML += `<li>${spellName}</li>`
-
+  spellsDiv.innerHTML += `<li>${manaCost}</li>` 
   f.reset()
 }
 
