@@ -13,8 +13,8 @@ const addListElement = function(ev) {
   //Spellname createElement method call below
   let spellEntry = createListElement()
   //addSpan method calls for the spell and mana below
-  addSpan(spellEntry, spellName)
-  addSpan(spellEntry, ' : ' + manaCost + ' mana\n ')
+  addSpan(spellEntry, spellName + ' : ', false)
+  addSpan(spellEntry, manaCost + ' mana\n', true)
   //append into the list of spells
   spellsDiv.appendChild(spellEntry)
 
@@ -25,9 +25,12 @@ function createListElement(){//simply generates the li element
   return document.createElement('li')
 }
 
-function addSpan(parentElement, string){// passes in the li element and string to create spans
-    let entrySpan = document.createElement('span')
-    entrySpan.appendChild(document.createTextNode(string + ' '))
+function addSpan(parentElement, string, manaStyle){// passes in the li element and string to create spans
+    let entrySpan = document.createElement('span')   
+    entrySpan.appendChild(document.createTextNode(string))
+    if(manaStyle === true){//style the mana text to purple if it is mana
+        entrySpan.style.color = '#00ccff'
+    }
     parentElement.appendChild(entrySpan)
     return entrySpan
 }
