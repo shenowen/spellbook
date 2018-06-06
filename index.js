@@ -54,7 +54,7 @@ const app = {
       }
       //add to array of spells
       this.spellsArray.push(spell)
-      //console.log(this.spellsArray)
+      console.log(this.spellsArray)
       const item = this.renderItem(spell)
       
       const list = document.querySelector('#spells')
@@ -68,6 +68,12 @@ const app = {
         const button = ev.target
         button.parentNode.parentNode.removeChild(button.parentNode)
         //this.parentNode.parentNode.removeChild(this.parentNode);
+        for(let i = 0; i < this.spellsArray.length; i++){
+            if(button.parentNode.textContent.includes(this.spellsArray[i].name)){
+                this.spellsArray.splice(i,1)
+            }
+        }
+        console.log(this.spellsArray)
     }
 
   }
