@@ -1,3 +1,4 @@
+
 const app = {
     init: function() {
       const form = document.querySelector('form')
@@ -31,7 +32,7 @@ const app = {
       childElements.forEach(function(el) {
         item.appendChild(el)
       })
-  
+      
       return item
     },
   
@@ -42,14 +43,17 @@ const app = {
         name: f.spellName.value,
         level: f.level.value,
       }
-  
+      //add to array of spells
+      this.spellsArray.push(spell)
+      //console.log(this.spellsArray)
       const item = this.renderItem(spell)
-  
+      
       const list = document.querySelector('#spells')
       list.appendChild(item)
   
       f.reset()
     },
+    spellsArray: [] ,
   }
   
   app.init()
