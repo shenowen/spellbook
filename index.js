@@ -27,7 +27,16 @@ const app = {
   
       const item = document.createElement('li')
       item.classList.add('spell')
-  
+
+      //add delete button 
+      const deleteButton = document.createElement('button')
+      deleteButton.innerHTML += 'DELETE'
+      item.appendChild(deleteButton)
+      deleteButton.addEventListener('click', (ev) => {
+        ev.preventDefault()
+        this.removeSpell(ev)
+      })
+      
       // append each <span> to the <li>
       childElements.forEach(function(el) {
         item.appendChild(el)
@@ -54,6 +63,13 @@ const app = {
       f.reset()
     },
     spellsArray: [] ,
+
+    removeSpell: function(ev){
+        const button = ev.target
+        button.parentNode.parentNode.removeChild(button.parentNode)
+        //this.parentNode.parentNode.removeChild(this.parentNode);
+    }
+
   }
   
   app.init()
