@@ -1,39 +1,55 @@
-const form = document.querySelector('form')
-
-const addListElement = function(ev) {
-  ev.preventDefault()
-
-  const f = ev.target
-  const spellName = f.spellName.value
-  const manaCost = f.manaCost.value
-
-  const spellsDiv = document.querySelector('#spells')
-  /*spellsDiv.innerHTML += `<li>${spellName}</li>`
-  spellsDiv.innerHTML += `<li>${manaCost} mana</li>` */// old way before createElement()
-  //Spellname createElement method call below
-  let spellEntry = createListElement()
-  //addSpan method calls for the spell and mana below
-  addSpan(spellEntry, spellName + ' : ', false)
-  addSpan(spellEntry, manaCost + ' mana\n', true)
-  //append into the list of spells
-  spellsDiv.appendChild(spellEntry)
-
-  f.reset()
-}
-
-function createListElement(){//simply generates the li element
-  return document.createElement('li')
-}
-
-function addSpan(parentElement, string, manaStyle){// passes in the li element and string to create spans
-    let entrySpan = document.createElement('span')   
-    entrySpan.appendChild(document.createTextNode(string))
-    if(manaStyle === true){//style the mana text to purple if it is mana
-        entrySpan.style.color = '#00ccff'
-    }
-    parentElement.appendChild(entrySpan)
-    return entrySpan
-}
-
-
-form.addEventListener('submit', addListElement)
+const app = {
+    init: function() {
+      const form = document.querySelector('form')
+      form.addEventListener('submit', (ev) => {
+        ev.preventDefault()
+        this.handleSubmit(ev)
+      })
+    },
+  
+    renderProperty: function(name, value) {
+      const el = document.createElement('span')
+      el.classList.add(name)
+      el.textContent = value
+      el.setAttribute('title', value)
+      return el
+    },
+  
+    renderItem: function(spell) {
+      // ['name', 'level']
+      const properties = Object.keys(spell)
+  
+      // collect an array of <span> elements
+      const childElements = properties.map((prop) => {
+        return this.renderProperty(prop, spell[prop])
+      })
+  
+      const item = document.createElement('li')
+      item.classList.add('spell')
+  
+      // append each <span> to the <li>
+      childElements.forEach(function(el) {
+        item.appendChild(el)
+      })
+  
+      return item
+    },
+  
+    handleSubmit: function(ev) {
+      const f = ev.target
+  
+      const spell = {
+        name: f.spellName.value,
+        level: f.level.value,
+      }
+  
+      const item = this.renderItem(spell)
+  
+      const list = document.querySelector('#spells')
+      list.appendChild(item)
+  
+      f.reset()
+    },
+  }
+  
+  app.init()
