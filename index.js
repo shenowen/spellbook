@@ -1,18 +1,15 @@
-console.log('testing')
+const form = document.querySelector('form')
 
-const heading = document.querySelector('#header2')
-const button = document.querySelector('button')
+const changeHeading = function(ev) {
+  ev.preventDefault()
 
-function changeTextBonus(){
-    heading.textContent = 'changed text bois'
+  const f = ev.target
+  const spellName = f.spellName.value
+
+  const spellsDiv = document.querySelector('#spells')
+  spellsDiv.innerHTML += `<li>${spellName}</li>`
+
+  f.reset()
 }
 
-button.addEventListener("click", changeTextBonus)
-
-let changingheader = document.querySelector('h2')
-//const changebutton = document.querySelector('#button2')
-
-
-function changeHeaderText(){
-    changingheader.textContent = document.getElementById('headertext').value
-}
+form.addEventListener('submit', changeHeading)

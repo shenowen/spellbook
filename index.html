@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Spellbook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spellbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1 id="header1">Spellbook</h1>
-    <h1 id="header2">2nd Header</h1>
-    <h1 id="header3">3rd Header</h1>
-    <h1 id="header4">4th Header</h1>
-    <button>Change Text Heading 2</button><br>
-    <h2>Changing Header</h2>
-    <form onsubmit="changeHeaderText();return false">
-        Change text of above header <br>
-        <input type="text" name="headertext" id="headertext"><br>
-        <input type="submit">
+  <img src="skull.png" id="skull" alt="">
+  <img src="quill.png" id="quill" alt="">
 
-    </form>
-    <script src="index.js"></script>
+  <h1>Spellbook</h1>
+
+  <form>
+    <div>
+      <input
+        type="text"
+        name="spellName"
+        placeholder="Enter a spell name"
+        autofocus
+      >
+      <button type="submit">Add</button>
+    </div>
+  </form>
+
+  <main>
+    <ul id="spells"></ul>
+  </main>
+
+  <script src="index.js"></script>
 </body>
 </html>
